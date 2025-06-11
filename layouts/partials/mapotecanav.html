@@ -1,0 +1,30 @@
+<aside class="mapoteca-nav">
+  <ul role="list">
+    {{ $currentPage := . }}
+    {{ $mapoteca := .Site.GetPage "section" "mapoteca" }}
+
+    {{ range $mapoteca.Sections }}
+    <li class="{{ if or (eq .RelPermalink $currentPage.RelPermalink) (in $currentPage.RelPermalink .RelPermalink) }}active{{ end }}">
+      {{ if .Sections }}
+        {{ .Title }}
+        <ul role="list" class="{{ if in $currentPage.RelPermalink .RelPermalink }}shown{{ end }}">
+          {{ range .Sections }}
+          <li>
+            {{ .Title }}
+            {{ if .Sections }}
+            <ul role="list" class="{{ if in $currentPage.RelPermalink .RelPermalink }}shown{{ end }}">
+              {{ range .Sections }}
+              <li class="{{ if in $currentPage.RelPermalink .RelPermalink }}selected{{ end }}"><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+              {{ end }}
+            </ul>
+            {{ end }}
+          </li>
+          {{ end }}
+        </ul>
+      {{ else }}
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      {{ end }}
+    </li>
+    {{ end }}
+  </ul>
+</aside>

@@ -1,0 +1,138 @@
+{{ partial "header.html" . }}
+
+<main>
+  <section class="geoservicios section">
+    <div class="wrapper">
+      <h1 class="section-title text-center">{{.Title}}</h1>
+    </div>
+  </section>
+  <!-- censo 2022 -->
+  <section class="geoservicio section">
+    <div class="wrapper flow">
+      <h2 class="text-center">Censo 2022</h2>
+      <div class="flow">
+        <p>
+          Se visualizan los resultados censales del Censo Nacional de Población,
+          Hogares y Viviendas 2022, en sus distintos niveles de desagregación.
+        </p>
+        <div class="link-box">
+          <a
+            href="https://geoserver.estadistica.tucuman.gob.ar/geoserver/censo2022/wms"
+            target="_blank"
+            class="link-input"
+          >
+            https://geoserver.estadistica.tucuman.gob.ar/geoserver/censo2022/wms
+          </a>
+          <button class="copy-btn">📋 Copiar</button>
+        </div>
+
+        <div class="link-box">
+          <a
+            href="https://geoserver.estadistica.tucuman.gob.ar/geoserver/censo2022/wfs"
+            target="_blank"
+            >https://geoserver.estadistica.tucuman.gob.ar/geoserver/censo2022/wfs</a
+          >
+          <button class="copy-btn">📋 Copiar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- censo 2010 -->
+  <section class="geoservicio section">
+    <div class="wrapper flow">
+      <h2 class="text-center">Censo 2010</h2>
+      <div class="flow">
+        <p>
+          Se visualizan los resultados censales del Censo Nacional de Población,
+          Hogares y Viviendas 2010, en sus distintos niveles de desagregación.
+        </p>
+        <div class="link-box">
+          <a
+            href="https://geoserver.estadistica.tucuman.gob.ar/geoserver/censo2010/wms"
+            target="_blank"
+            class="link-input"
+          >
+            https://geoserver.estadistica.tucuman.gob.ar/geoserver/censo2010/wms
+          </a>
+          <button class="copy-btn">📋 Copiar</button>
+        </div>
+        <div class="link-box">
+          <a
+            href="https://geoserver.estadistica.tucuman.gob.ar/geoserver/censo2010/wfs"
+            target="_blank"
+            class="link-input"
+          >
+            https://geoserver.estadistica.tucuman.gob.ar/geoserver/censo2010/wfs
+          </a>
+          <button class="copy-btn">📋 Copiar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- censo 2001 -->
+  <section class="geoservicio section">
+    <div class="wrapper flow">
+      <h2 class="text-center">Censo 2001</h2>
+      <div class="flow">
+        <p>
+          Se visualiza el indicador IPMH Convergente para Gran San Miguel de
+          Tucumán, construido con los resultados del Censo Nacional de
+          Población, Hogares y Viviendas 2001.
+        </p>
+        <div class="link-box">
+          <a
+            href="https://geoserver.estadistica.tucuman.gob.ar/geoserver/censo2001/wms"
+            target="_blank"
+            class="link-input"
+          >
+            https://geoserver.estadistica.tucuman.gob.ar/geoserver/censo2001/wms
+          </a>
+          <button class="copy-btn">📋 Copiar</button>
+        </div>
+        <div class="link-box">
+          <a
+            href="https://geoserver.estadistica.tucuman.gob.ar/geoserver/censo2001/wfs"
+            target="_blank"
+            class="link-input"
+          >
+            https://geoserver.estadistica.tucuman.gob.ar/geoserver/censo2001/wfs
+          </a>
+          <button class="copy-btn">📋 Copiar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- limites -->
+  <section class="geoservicio section">
+    <div class="wrapper flow">
+      <h2 class="text-center">Límites</h2>
+      <div class="flow">
+        <p>
+          Se presentan los polígonos que delimitan Fracciones y Radios 2010 y
+          2022, como así también los límites departamentales y de gobiernos
+          locales.
+        </p>
+        <div class="link-box">
+          <a
+            href="https://geoserver.estadistica.tucuman.gob.ar/geoserver/limites/wms"
+            target="_blank"
+            class="link-input"
+          >
+            https://geoserver.estadistica.tucuman.gob.ar/geoserver/limites/wms
+          </a>
+          <button class="copy-btn">📋 Copiar</button>
+        </div>
+        <div class="link-box">
+          <a
+            href="https://geoserver.estadistica.tucuman.gob.ar/geoserver/limites/wfs"
+            target="_blank"
+            class="link-input"
+            >https://geoserver.estadistica.tucuman.gob.ar/geoserver/limites/wfs</a
+          >
+          <button class="copy-btn">📋 Copiar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{{ partial "footer.html" . }}

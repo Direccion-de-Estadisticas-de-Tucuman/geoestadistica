@@ -1,0 +1,53 @@
+{{ partial "header.html" . }}
+
+<main>
+  {{partial "mapotecanav.html" .}}
+  
+  <section class="mapoteca-main">
+    
+    <section class="section">
+      
+      <div class="wrapper">
+          <nav aria-label="breadcrumb" class="breadcrumb">
+            <ol>
+            {{ range .Ancestors.Reverse }}        
+            {{ if in .RelPermalink "/mapoteca/" }} 
+            <li>
+                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            </li>
+            {{ end }}
+            {{end}}
+            <li class="active">
+            <a aria-current="page" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+            </li>
+        </ol>
+        </nav>
+        <h2 class="section-sub-title text-center">{{.Title}}</h2>
+        <div class="equal-columns">
+          <div class="flow">
+            {{ with .Resources.GetMatch "pdf" }}
+            <a class="descarga" href="{{ .RelPermalink }}" download>Descarga</a>            
+            {{end}} {{.Content}}
+          </div>
+          <div style="height: 60dvh; margin-top: 1rem;">
+            {{ with .Resources.GetMatch "pdf" }}
+            <object class="pdf" data="{{ .RelPermalink }}" 
+            width="400"
+            height="100%">
+            </object>    
+            {{end}}       
+          </div>
+          <!-- {{ range .Resources.ByType "image" }} {{ with .Resize "300x" }}
+          <img
+            src="{{ .RelPermalink }}"
+            width="{{ .Width }}"
+            height="{{ .Height }}"
+            alt=""
+          />
+          {{ end }} {{ end }} -->
+        </div>
+      </div>
+    </section>
+  </section>
+</main>
+{{ partial "footer.html" . }}

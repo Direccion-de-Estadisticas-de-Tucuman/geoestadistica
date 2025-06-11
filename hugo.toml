@@ -1,0 +1,28 @@
+baseURL = 'https://estadistica.tucuman.gov.ar/geoestadistica'
+languageCode = 'es-AR'
+defaultContentLanguage = "es"
+defaultContentLang = "es"
+title = 'Geoestadística'
+
+[menu]
+  [[menu.main]]
+    name = "Inicio"
+    pageref = "/"
+    weight=1
+  [[menu.main]]
+    name = "Visor"
+    pageref = "visor/"
+    weight=4
+  [[menu.main]]
+    name = "Mapoteca"
+    pageref = "mapoteca/"
+    weight=2
+  [[menu.main]]
+    name = "Geoservicios"
+    pageref = "geoservicios/"
+    weight=3
+
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"

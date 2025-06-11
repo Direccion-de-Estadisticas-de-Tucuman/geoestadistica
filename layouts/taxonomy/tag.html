@@ -1,0 +1,39 @@
+{{ partial "header.html" . }}
+
+<main>
+  {{ partial "mapotecanav.html" .}}
+  <section class="mapoteca-main">
+    <section class="section">
+      <div class="wrapper">
+        <h1>Tags</h1>
+        <h2>{{ .Title }}</h2>
+      </div>
+      {{ if .Data.Term }}
+      <article class="section">
+        <div class="wrapper">
+          {{ range.Data.Pages }}
+          <div class="mapa-en-lista">
+            <h3>
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            </h3>
+            {{ range .Resources.ByType "image" }} {{ with .Resize "150x webp q75" }}
+            <img
+              src="{{ .RelPermalink }}"
+              width="{{ .Width }}"
+              height="{{ .Height }}"
+              alt=""
+            />
+            {{ end }} {{ end }} <time datetime="{{ .Date.Format
+            "2006-01-02T15:04:05Z07:00" }}"> {{ dateFormat "January 2, 2006"
+            .Date }}
+          </div>
+          {{ end }}
+        </div>
+      </article>
+      {{ else }}
+      <p>No se pudo encontrar esta etiqueta.</p>
+      {{ end }}
+    </section>
+  </section>
+</main>
+{{ partial "footer.html" . }}

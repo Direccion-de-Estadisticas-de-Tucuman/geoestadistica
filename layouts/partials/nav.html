@@ -1,0 +1,35 @@
+<header class="site-header background-dark">
+  <div class="logos background-white">
+    {{ $dep_logo := resources.Get "images/dep_logo.png" }} {{ $dep_logo :=
+    resources.Get "images/dep_logo.png" }} {{ $dep_logo := $dep_logo.Process
+    "resize x65 q100" }}
+    <a href="https://estadistica.tucuman.gob.ar/">
+    <img
+      src="{{ $dep_logo.RelPermalink }}"
+      width="{{ $dep_logo.Width }}"
+      height="{{ $dep_logo.Height }}"
+    />
+    </a>
+    {{ $image := resources.Get "images/idet.png" }} {{ $image := $image.Process
+    "resize x65 q100" }}
+    <img
+      src="{{ $image.RelPermalink }}"
+      width="{{ $image.Width }}"
+      height="{{ $image.Height }}"
+    />
+  </div>
+  <div class="wrapper">
+    <nav class="primary-navigation">
+      <ul role="list">
+         {{ $currentPage := . }}
+        {{ range .Site.Menus.main }}
+        <li class="{{ if $currentPage.IsMenuCurrent "main" .}} active {{end}}">
+          <h3>
+            <a href="{{ .URL }}">{{ .Name }}</a>
+          </h3>
+        </li>
+        {{end}}
+      </ul>
+    </nav>
+  </div>
+</header>

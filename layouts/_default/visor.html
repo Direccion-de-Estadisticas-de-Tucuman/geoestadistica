@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image" href="./ico.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visor de mapas DEP</title>
+
+    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}" type="text/css">   
+    <script type="module" crossorigin src="./assets/main.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/main.css">
+  </head>
+  <body>
+    {{.Content}}
+    {{partial "nav.html" .}}
+    <main>
+      <div class="header-buscador">
+        <div class="wrapper">      
+          <form>
+            <div>
+            <input
+              class="input"
+              type="search"
+              name="buscardor"
+              id="buscador"
+              placeholder="Buscar localidad..."
+            >
+          </input>
+
+          <button id="buscador-cancelar-busqueda">X</button>
+          </div>
+          <div id="resultados" class="search-bar-list"></div>
+          </form>
+        </div>
+      </div>
+      <div id="map-container">
+        <div id="map">
+          <div id="capas-activas"></div>
+          <div id="mouse-position"></div>
+        </div>
+        <dialog id="dialog-impresion">
+          <div class="dialog-impresion__inner">
+          <h3>Modulo de impresión</h3>
+          <form class="flow">
+            <label for="titulo"><b>Título:</b></label>
+            <input
+              type="text"
+              name="titulo"
+              id="titulo"
+              placeholder="ej: Mapa de tucuman"
+            />
+            <label for="posicion"><b>Orientación de la página:</b></label>
+            <select id="posicion">
+              <option value="landscape">Horizontal</option>
+              <option value="portrait" selected>Vertical</option>
+            </select>
+          </form>
+          <menu>
+            <button id="export-pdf">Imprimir PDF</button>
+            <button id="cancel">Cancelar</button>
+          </menu>
+          </div>
+        </dialog>
+      </div>
+    </main>
+
+  </body>
+</html>
