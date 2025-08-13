@@ -2,7 +2,7 @@ baseURL = 'https://estadistica.tucuman.gov.ar/geoestadistica'
 languageCode = 'es-AR'
 defaultContentLanguage = "es"
 defaultContentLang = "es"
-title = 'Geoestadística'
+title = 'Portal Geoestadístico'
 
 [menu]
   [[menu.main]]
