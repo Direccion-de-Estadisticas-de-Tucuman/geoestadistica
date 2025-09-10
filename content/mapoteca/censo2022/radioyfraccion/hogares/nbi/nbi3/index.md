@@ -11,4 +11,4 @@ type = 'mapadescarga'
 
 ## Información:
 
-NBI 3 Hogares que tienen más de tres personas por cuarto
+NBI 3. Hacinamiento. Hogares que tienen más de tres personas por cuarto.

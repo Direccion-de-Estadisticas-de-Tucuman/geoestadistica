@@ -253,6 +253,83 @@
   }
 }
 
+@layer utilities {
+  [hidden] {
+    display: none;
+  }
+
+  .resizing * {
+    transition: none;
+    animation-play-state: paused;
+  }
+
+  .visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .text-brand {
+    color: var(--text-brand);
+  }
+  .text-high-contrast {
+    color: var(--text-high-contrast);
+  }
+
+  .section-title {
+    font-size: var(--font-size-heading-regular);
+  }
+
+  .section-sub-title {
+    font-size: var(--font-size-heading-sm);
+  }
+
+  .background-white {
+    background-color: var(--clr-white);
+  }
+
+  .background-base {
+    background-color: var(--background-base);
+  }
+  .background-light {
+    background-color: var(--background-light);
+  }
+  .background-extra-light {
+    background-color: var(--background-extra-light);
+  }
+  .background-dark {
+    background-color: var(--background-dark);
+  }
+  .background-extra-dark {
+    background-color: var(--background-extra-dark);
+  }
+
+  .background-accent {
+    background-color: var(--background-accent-dark);
+  }
+
+  .font-size-sm {
+    font-size: var(--font-size-sm);
+  }
+  .font-size-regular {
+    font-size: var(--font-size-regular);
+  }
+  .font-size-md {
+    font-size: var(--font-size-md);
+  }
+  .font-size-lg {
+    font-size: var(--font-size-lg);
+  }
+}
+
 @layer components {
   /*inicio*/
   @layer inicio {
@@ -291,7 +368,9 @@
       }
     }
   }
-
+  .inicio {
+    min-height: 100dvh;
+  }
   .pagina-inicio {
     background: linear-gradient(
         rgba(255, 255, 255, 0.6),
@@ -423,6 +502,11 @@
       background-size: cover;
       h2 {
         text-shadow: 1px 1px 2px white;
+      }
+    }
+    .mapoteca + .section {
+      h2.section-title {
+        font-size: var(--font-size-heading-sm);
       }
     }
     .tags {
@@ -595,82 +679,5 @@
     @media (width<600px) {
       padding: 0.1rem;
     }
-  }
-}
-
-@layer utilities {
-  [hidden] {
-    display: none;
-  }
-
-  .resizing * {
-    transition: none;
-    animation-play-state: paused;
-  }
-
-  .visually-hidden {
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-  }
-
-  .text-center {
-    text-align: center;
-  }
-
-  .text-brand {
-    color: var(--text-brand);
-  }
-  .text-high-contrast {
-    color: var(--text-high-contrast);
-  }
-
-  .section-title {
-    font-size: var(--font-size-heading-regular);
-  }
-
-  .section-sub-title {
-    font-size: var(--font-size-heading-sm);
-  }
-
-  .background-white {
-    background-color: var(--clr-white);
-  }
-
-  .background-base {
-    background-color: var(--background-base);
-  }
-  .background-light {
-    background-color: var(--background-light);
-  }
-  .background-extra-light {
-    background-color: var(--background-extra-light);
-  }
-  .background-dark {
-    background-color: var(--background-dark);
-  }
-  .background-extra-dark {
-    background-color: var(--background-extra-dark);
-  }
-
-  .background-accent {
-    background-color: var(--background-accent-dark);
-  }
-
-  .font-size-sm {
-    font-size: var(--font-size-sm);
-  }
-  .font-size-regular {
-    font-size: var(--font-size-regular);
-  }
-  .font-size-md {
-    font-size: var(--font-size-md);
-  }
-  .font-size-lg {
-    font-size: var(--font-size-lg);
   }
 }
