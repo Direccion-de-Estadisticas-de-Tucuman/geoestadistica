@@ -316,6 +316,7 @@
       border-radius: var(--border-radius-2);
       background-color: var(--background-extra-light);
       font-weight: 600;
+      text-align: center;
     }
 
     .breadcrumb ol {
@@ -335,8 +336,12 @@
     }
     .mapa-en-lista {
       padding-block-end: 0.5rem;
-      border-bottom: 1px dashed black;
+      border: 1px dashed black;
+      border-radius: var(--border-radius-2);
+      background-color: white;
+      padding: 1rem;
       display: grid;
+      column-gap: 2rem;
       grid-template-columns: 0.3fr 1fr;
       grid-template-rows: auto auto;
       align-items: center;
@@ -378,6 +383,21 @@
         padding: 1rem;
         grid-template-rows: subgrid;
         grid-row: span 3;
+
+        @media (width<600px) {
+          h3 {
+            margin-bottom: 3rem;
+          }
+        }
+      }
+    }
+    .mapa-descarga {
+      padding: 2rem;
+      border-radius: var(--border-radius-2);
+      border: 1px outset black;
+      background-color: white;
+      h2 {
+        margin-bottom: 2rem;
       }
     }
     .descarga {
@@ -406,10 +426,15 @@
       }
     }
     .tags {
+      border: 1px outset black;
+      border-radius: var(--border-radius-2);
       display: flex;
-
+      width: 100%;
+      flex-wrap: wrap;
+      background-color: white;
       li {
         margin: 1rem;
+        display: inline-block;
       }
     }
     main:has(.mapoteca-main) {
@@ -493,9 +518,12 @@
         padding-left: 0;
         padding-top: 0;
         > ul {
+          > li {
+            width: 100%;
+            display: block;
+          }
           gap: 0;
           margin: 0;
-          overflow: auto;
           list-style-type: none;
           display: flex;
         }

@@ -22,7 +22,7 @@
                 {{ end }} -->
             {{ with .Resources.GetMatch "pdf" }}
             <div style="height: 30dvh;">
-                <object class="pdf" data="{{ .RelPermalink }}" height="100%">
+                <object class="pdf" data="{{ .RelPermalink }}" height="100%" width="100%">
             </object>
             </div>    
             {{end}}      
