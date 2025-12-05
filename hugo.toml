@@ -4,6 +4,10 @@ defaultContentLanguage = "es"
 defaultContentLang = "es"
 title = 'Portal Geoestadístico'
 
+[markup.goldmark.renderer]
+unsafe = true
+
+
 [menu]
   [[menu.main]]
     name = "Inicio"
@@ -11,7 +15,7 @@ title = 'Portal Geoestadístico'
     weight=1
   [[menu.main]]
     name = "Visor"
-    pageref = "visor/"
+    url="https://estadistica.tucuman.gob.ar/visor/"    
     weight=4
   [[menu.main]]
     name = "Mapoteca"
@@ -21,6 +25,10 @@ title = 'Portal Geoestadístico'
     name = "Geoservicios"
     pageref = "geoservicios/"
     weight=3
+  [[menu.main]]
+    name="Visualizadores"
+    pageref="visualizadores/"
+    weight=5
 
 
 [taxonomies]

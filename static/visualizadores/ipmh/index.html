@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/maplibre-gl@5.5.0/dist/maplibre-gl.js"></script>
+    <link
+      href="https://unpkg.com/maplibre-gl@5.5.0/dist/maplibre-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@maplibre/maplibre-gl-compare@0.5.0/dist/maplibre-gl-compare.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@maplibre/maplibre-gl-compare@0.5.0/dist/maplibre-gl-compare.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="filtros">
+      <h2>Filtros aplicables</h2>
+      <fieldset>
+        <legend>Codigo Municipio</legend>
+        <div>
+          <input id="depto" type="checkbox" />
+          <label for="depto">Aplicar Filtro</label>
+          <div>
+            <label for="depto-selector">Departamento:</label>
+            <select name="selector" id="depto-selector">
+              <option value="007">Burruyacú</option>
+              <option value="084" selected>Capital</option>
+              <option value="021">Chicligasta</option>
+              <option value="014">Cruz Alta</option>
+              <option value="028">Famaillá</option>
+              <option value="035">Graneros</option>
+              <option value="042">Juan Bautista Alberdi</option>
+              <option value="049">La Cocha</option>
+              <option value="056">Leales</option>
+              <option value="063">Lules</option>
+              <option value="070">Monteros</option>
+              <option value="077">Río Chico</option>
+              <option value="091">Simoca</option>
+              <option value="098">Tafí Del Valle</option>
+              <option value="105">Tafí Viejo</option>
+              <option value="112">Trancas</option>
+              <option value="119">Yerba Buena</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Fracción</legend>
+        <div>
+          <input id="frac" type="checkbox" />
+          <label for="frac">Aplicar Filtro</label>
+          <div>
+            <label for="frac-selector">Fracción:</label>
+            <select name="selector" id="frac-selector">
+              <option value="01">01</option>
+              <option value="02">02</option>
+              <option value="03">03</option>
+              <option value="04">04</option>
+              <option value="05">05</option>
+              <option value="06">06</option>
+              <option value="07">07</option>
+              <option value="08">08</option>
+              <option value="09">09</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+              <option value="30">30</option>
+              <option value="31">31</option>
+              <option value="32">32</option>
+              <option value="33">33</option>
+              <option value="34">34</option>
+              <option value="35">35</option>
+              <option value="36">36</option>
+              <option value="37">37</option>
+              <option value="38">38</option>
+              <option value="39">39</option>
+              <option value="40">40</option>
+              <option value="41">41</option>
+              <option value="42">42</option>
+              <option value="43">43</option>
+              <option value="44">44</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Radio</legend>
+        <div>
+          <input id="radio" type="checkbox" />
+          <label for="radio">Aplicar Filtro</label>
+          <div>
+            <label for="radio-selector">Radio:</label>
+            <select name="selector" id="radio-selector">
+              <option value="01">01</option>
+              <option value="02">02</option>
+              <option value="03">03</option>
+              <option value="04">04</option>
+              <option value="05">05</option>
+              <option value="06">06</option>
+              <option value="07">07</option>
+              <option value="08">08</option>
+              <option value="09">09</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Privación Convergente %</legend>
+        <div>
+          <input id="hpprivconv" type="checkbox" />
+          <label for="hpprivconv">Aplicar Filtro</label>
+          <div>
+            <label for="operator-hpprivconv">Operator:</label>
+            <select name="operator" id="operator-hpprivconv">
+              <option value=">=">>=</option>
+              <option value="==" selected>==</option>
+              <option value="<="><=</option>
+            </select>
+            <br />
+            <label for="range-hpprivconv">Número:</label>
+            <input
+              type="number"
+              id="range-hpprivconv"
+              name="range"
+              value="10"
+              min="0.0"
+              max="100"
+            />
+          </div>
+        </div>
+      </fieldset>
+      <div id="capa-info">
+        <p>
+          Del lado <b>izquierdo</b> se muestra el Estimador Provincial de IPMH
+          para el <b>Censo 2010</b>
+        </p>
+        <p>
+          Del lado <b>derecho</b> se muestra el IPMH para el <b>Censo 2022</b>
+        </p>
+      </div>
+    </div>
+    <div id="comparison-container">
+      <div id="before" class="map"></div>
+      <div id="after" class="map"></div>
+    </div>
+    <div id="datos">
+      <h2>Click en un radio para mostrar datos</h2>
+      IPMH %:
+      <p id="dato-hpprivconv"></p>
+      Depto:
+      <p id="dato-depto"></p>
+      Fracción:
+      <p id="dato-frac"></p>
+      Radio:
+      <p id="dato-radio"></p>
+      <div id="state-legend" class="legend">
+        <h4>Porcentaje de hogares con Privación Convergente</h4>
+        <div><span style="background-color: #ffffd4"></span>0% - 20%</div>
+        <div><span style="background-color: #fec46c"></span>20,01% - 30%</div>
+        <div><span style="background-color: #e57217"></span>30,01% - 60%</div>
+        <div><span style="background-color: #993404"></span>60,01% - 100%</div>
+      </div>
+    </div>
+    <script>
+      const beforeMap = new maplibregl.Map({
+        container: "before", // container id
+        style: {
+          version: 8,
+          sources: {
+            argenmap: {
+              type: "raster",
+              scheme: "tms",
+              tiles: [
+                "https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG%3A3857@png/{z}/{x}/{y}.png",
+              ],
+              tileSize: 256,
+            },
+          },
+          layers: [
+            {
+              id: "imagery-tiles",
+              type: "raster",
+              source: "argenmap",
+              minzoom: 1,
+              maxzoom: 18,
+            },
+          ],
+        },
+        center: [-65.215, -26.815], // starting position [lng, lat]
+        zoom: 8, // starting zoom
+      });
+
+      const afterMap = new maplibregl.Map({
+        container: "after", // container id
+        style: {
+          version: 8,
+          sources: {
+            argenmap: {
+              type: "raster",
+              scheme: "tms",
+              tiles: [
+                "https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG%3A3857@png/{z}/{x}/{y}.png",
+              ],
+              tileSize: 256,
+            },
+          },
+          layers: [
+            {
+              id: "imagery-tiles",
+              type: "raster",
+              source: "argenmap",
+              minzoom: 1,
+              maxzoom: 18,
+            },
+          ],
+        },
+        center: [-65.215, -26.815], // starting position [lng, lat]
+        zoom: 8, // starting zoom
+      });
+
+      const data = {};
+      let hoveredStateId = null;
+
+      beforeMap.on("load", () => {
+        beforeMap.addSource("ipmh_censo_2010", {
+          type: "geojson",
+          data: `./data/ipmh_censo_2010.geojson`,
+          //genera id unico
+          generateId: true,
+        });
+
+        beforeMap.addLayer({
+          id: "ipmh_censo_2010",
+          type: "fill",
+          source: "ipmh_censo_2010",
+          layout: {},
+          paint: {
+            "fill-color": [
+              "step",
+              ["get", "hpprivconv"],
+              "#ffffd4",
+              20,
+              "#fec46c",
+              30,
+              "#e57217",
+              60,
+              "#993404",
+            ],
+          },
+        });
+
+        beforeMap.addLayer({
+          id: "linea-ipmh_censo_2010",
+          type: "line",
+          source: "ipmh_censo_2010",
+          layout: {},
+          paint: {
+            "line-color": "black",
+            "line-width": [
+              "case",
+              ["boolean", ["feature-state", "hover"], false],
+              3,
+              0.5,
+            ],
+          },
+        });
+
+        // When a click event occurs on a feature in the states layer, open a popup at the
+        // location of the click, with description HTML from its properties.
+        beforeMap.on("click", "ipmh_censo_2010", (e) => {
+          const datos = document.querySelector("#datos");
+
+          const depto = document.querySelector("#dato-depto");
+          const frac = document.querySelector("#dato-frac");
+          const radio = document.querySelector("#dato-radio");
+          const hpprivconv = document.querySelector("#dato-hpprivconv");
+
+          hpprivconv.textContent = e.features[0].properties.hpprivconv;
+          depto.textContent = e.features[0].properties.depto;
+          frac.textContent = e.features[0].properties.frac;
+          radio.textContent = e.features[0].properties.radio;
+        });
+
+        // Change the cursor to a pointer when the mouse is over the states layer.
+        beforeMap.on("mouseenter", "ipmh_censo_2010", () => {
+          beforeMap.getCanvas().style.cursor = "pointer";
+        });
+        // When the user moves their mouse over the state-fill layer, we'll update the
+        // feature state for the feature under the mouse.
+        beforeMap.on("mousemove", "ipmh_censo_2010", (e) => {
+          if (e.features.length > 0) {
+            if (hoveredStateId) {
+              beforeMap.setFeatureState(
+                { source: "ipmh_censo_2010", id: hoveredStateId },
+                { hover: false }
+              );
+            }
+            hoveredStateId = e.features[0].id;
+            beforeMap.setFeatureState(
+              { source: "ipmh_censo_2010", id: hoveredStateId },
+              { hover: true }
+            );
+          }
+        });
+
+        // When the mouse leaves the state-fill layer, update the feature state of the
+        // previously hovered feature.
+        beforeMap.on("mouseleave", "ipmh_censo_2010", () => {
+          if (hoveredStateId) {
+            beforeMap.setFeatureState(
+              { source: "ipmh_censo_2010", id: hoveredStateId },
+              { hover: false }
+            );
+          }
+          hoveredStateId = null;
+        });
+      });
+
+      afterMap.on("load", () => {
+        afterMap.addSource("ipmh_censo_2022", {
+          type: "geojson",
+          data: `./data/ipmh_censo_2022.geojson`,
+          //genera id unico
+          generateId: true,
+        });
+
+        afterMap.addLayer({
+          id: "ipmh_censo_2022",
+          type: "fill",
+          source: "ipmh_censo_2022",
+          layout: {},
+          paint: {
+            "fill-color": [
+              "step",
+              ["get", "hpprivconv"],
+              "#ffffd4",
+              20,
+              "#fec46c",
+              30,
+              "#e57217",
+              60,
+              "#993404",
+            ],
+          },
+        });
+
+        afterMap.addLayer({
+          id: "linea-ipmh_censo_2022",
+          type: "line",
+          source: "ipmh_censo_2022",
+          layout: {},
+          paint: {
+            "line-color": "black",
+            "line-width": [
+              "case",
+              ["boolean", ["feature-state", "hover"], false],
+              3,
+              0.5,
+            ],
+          },
+        });
+
+        // When a click event occurs on a feature in the states layer, open a popup at the
+        // location of the click, with description HTML from its properties.
+        afterMap.on("click", "ipmh_censo_2022", (e) => {
+          const datos = document.querySelector("#datos");
+
+          const depto = document.querySelector("#dato-depto");
+          const frac = document.querySelector("#dato-frac");
+          const radio = document.querySelector("#dato-radio");
+          const hpprivconv = document.querySelector("#dato-hpprivconv");
+
+          depto.textContent = e.features[0].properties.depto;
+          hpprivconv.textContent = e.features[0].properties.hpprivconv;
+        });
+
+        // Change the cursor to a pointer when the mouse is over the states layer.
+        afterMap.on("mouseenter", "ipmh_censo_2022", () => {
+          afterMap.getCanvas().style.cursor = "pointer";
+        });
+
+        // When the user moves their mouse over the state-fill layer, we'll update the
+        // feature state for the feature under the mouse.
+        afterMap.on("mousemove", "ipmh_censo_2022", (e) => {
+          if (e.features.length > 0) {
+            if (hoveredStateId) {
+              afterMap.setFeatureState(
+                { source: "ipmh_censo_2022", id: hoveredStateId },
+                { hover: false }
+              );
+            }
+            hoveredStateId = e.features[0].id;
+            afterMap.setFeatureState(
+              { source: "ipmh_censo_2022", id: hoveredStateId },
+              { hover: true }
+            );
+          }
+        });
+
+        // When the mouse leaves the state-fill layer, update the feature state of the
+        // previously hovered feature.
+        afterMap.on("mouseleave", "ipmh_censo_2022", () => {
+          afterMap.getCanvas().style.cursor = "";
+
+          if (hoveredStateId) {
+            afterMap.setFeatureState(
+              { source: "ipmh_censo_2022", id: hoveredStateId },
+              { hover: false }
+            );
+          }
+          hoveredStateId = null;
+        });
+      });
+
+      let container = "#comparison-container";
+
+      var map = new maplibregl.Compare(beforeMap, afterMap, container, {
+        // mousemove: true,
+        // orientation: "vertical",
+      });
+
+      document.getElementById("filtros").addEventListener("change", (e) => {
+        switch (e.target.id) {
+          case "depto":
+            depto = document.getElementById("depto-selector");
+            operator = "==";
+            e.target.checked
+              ? (data.depto = depto.value)
+              : delete data["depto"];
+            console.log(data);
+            break;
+          case "frac":
+            frac = document.getElementById("frac-selector");
+            operator = "==";
+            e.target.checked ? (data.frac = frac.value) : delete data["frac"];
+            console.log(data);
+            break;
+          case "radio":
+            radio = document.getElementById("radio-selector");
+            operator = "==";
+            e.target.checked
+              ? (data.radio = radio.value)
+              : delete data["radio"];
+            console.log(data);
+            break;
+          case "hpprivconv":
+            operatorHpprivconv = document.getElementById("operator-hpprivconv");
+            hpprivconv = document.getElementById("range-hpprivconv");
+            operator = operatorHpprivconv.value;
+
+            e.target.checked
+              ? (data.hpprivconv = Number(hpprivconv.value))
+              : delete data["hpprivconv"];
+
+            break;
+        }
+        filterOnValue = Object.keys(data);
+
+        mapLibreFilterSpread = [
+          "all",
+          ...filterOnValue.map((id) => [operator, id, data[id]]),
+        ];
+        mapLibreFilter = mapLibreFilterSpread;
+
+        afterMap.setFilter("ipmh_censo_2022", mapLibreFilter);
+        beforeMap.setFilter("ipmh_censo_2010", mapLibreFilter);
+      });
+    </script>
+  </body>
+</html>
