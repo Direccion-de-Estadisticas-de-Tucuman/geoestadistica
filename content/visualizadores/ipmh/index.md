@@ -1,6 +1,7 @@
 +++
 date = '2025-12-05T11:57:17-03:00'
 draft = false
+title = 'IPMH. Privación Convergente'
 +++
 
 <script src="https://unpkg.com/maplibre-gl@5.5.0/dist/maplibre-gl.js"></script>
@@ -16,17 +17,51 @@ draft = false
     />
 
 <link rel="stylesheet" href="./style.css" />
-
-<div class="app">
+    <div class="app">
+      <div id="titulo">
+        <h1>Privación Convergente. Provincia de Tucumán. 2001 vs 2022</h1>
+      </div>
       <div id="filtros">
+        <dialog id="infoHpprivconv">
+          <p>
+            La privación de recursos corrientes se define como aquellos hogares
+            cuya capacidad económica sea insuficiente para adquirir los bienes y
+            servicios considerados básicos para la subsistencia.
+          </p>
+          <p>
+            La privación de recursos patrimoniales se define como aquellos
+            hogares que no cuentan con requisitos de habitabilidad básicos tales
+            como aislamiento, durabilidad e higiene.
+          </p>
+          <h3>Privación Convergente</h3>
+          <p>
+            La <b>privación de recursos convergente </b> refiere a los hogares
+            en viviendas particulares que presentan ambos tipos de privación
+            sobre el total de hogares en viviendas particulares de cada radio.
+          </p>
+          <p>
+            Privación convergente: cociente entre los hogares en viviendas
+            particulares que presentan privación convergente y el total de
+            hogares en viviendas particulares de cada radio, por cien.
+          </p>
+          <p>
+            <b>Fuente:</b>INDEC - Censo Nacional de Población, Hogares y
+            Viviendas 2022. Resultados definitivos.
+          </p>
+          <form method="dialog">
+            <button>Cerrar</button>
+          </form>
+        </dialog>
         <h2>Filtros aplicables</h2>
-        <fieldset>
-          <legend>Codigo Municipio</legend>
-          <div>
-            <input id="depto" type="checkbox" />
-            <label for="depto">Aplicar Filtro</label>
+        <!-- depto y muni -->
+        <div>
+          <fieldset>
+            <legend>Departamento</legend>
             <div>
-              <label for="depto-selector">Departamento:</label>
+              <label class="checkbox">
+                <input id="depto" type="checkbox" />
+                <span></span>
+              </label>
               <select name="selector" id="depto-selector">
                 <option value="007">Burruyacú</option>
                 <option value="084" selected>Capital</option>
@@ -47,117 +82,264 @@ draft = false
                 <option value="119">Yerba Buena</option>
               </select>
             </div>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>Fracción</legend>
-          <div>
-            <input id="frac" type="checkbox" />
-            <label for="frac">Aplicar Filtro</label>
+          </fieldset>
+        </div>
+        <div>
+          <!-- muni -->
+          <fieldset>
+            <legend>Municipio o Comuna</legend>
             <div>
-              <label for="frac-selector">Fracción:</label>
-              <select name="selector" id="frac-selector">
-                <option value="01">01</option>
-                <option value="02">02</option>
-                <option value="03">03</option>
-                <option value="04">04</option>
-                <option value="05">05</option>
-                <option value="06">06</option>
-                <option value="07">07</option>
-                <option value="08">08</option>
-                <option value="09">09</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-                <option value="16">16</option>
-                <option value="17">17</option>
-                <option value="18">18</option>
-                <option value="19">19</option>
-                <option value="20">20</option>
-                <option value="21">21</option>
-                <option value="22">22</option>
-                <option value="23">23</option>
-                <option value="24">24</option>
-                <option value="25">25</option>
-                <option value="26">26</option>
-                <option value="27">27</option>
-                <option value="28">28</option>
-                <option value="29">29</option>
-                <option value="30">30</option>
-                <option value="31">31</option>
-                <option value="32">32</option>
-                <option value="33">33</option>
-                <option value="34">34</option>
-                <option value="35">35</option>
-                <option value="36">36</option>
-                <option value="37">37</option>
-                <option value="38">38</option>
-                <option value="39">39</option>
-                <option value="40">40</option>
-                <option value="41">41</option>
-                <option value="42">42</option>
-                <option value="43">43</option>
-                <option value="44">44</option>
+              <label class="checkbox">
+                <input id="muni" type="checkbox" />
+                <span></span>
+              </label>
+              <select name="selector" id="muni-selector">
+                <optgroup label="Municipios">
+                  <option value="0091">AGUILARES</option>
+                  <option value="0021">ALDERETES</option>
+                  <option value="0028">BANDA DEL RIO SALI</option>
+                  <option value="0070">BELLA VISTA</option>
+                  <option value="0007">BURRUYACU</option>
+                  <option value="0035">CONCEPCION</option>
+                  <option value="0042">FAMAILLA</option>
+                  <option value="0049">GRANEROS</option>
+                  <option value="0056">JUAN BAUTISTA ALBERDI</option>
+                  <option value="0063">LA COCHA</option>
+                  <option value="0112">LAS TALITAS</option>
+                  <option value="0084">MONTEROS</option>
+                  <option value="0014">SAN MIGUEL DE TUCUMAN</option>
+                  <option value="0077">SAN ISIDRO DE LULES</option>
+                  <option value="0098">SIMOCA</option>
+                  <option value="0105">TAFI DEL VALLE</option>
+                  <option value="0119">TAFI VIEJO</option>
+                  <option value="0126">TRANCAS</option>
+                  <option value="0133">YERBA BUENA</option>
+                </optgroup>
+                <optgroup label="Comunas">
+                  <option value="8378">ACHERAL</option>
+                  <option value="8567">AMAICHA DEL VALLE</option>
+                  <option value="8595">ANCAJULI</option>
+                  <option value="8497">BUENA VISTA</option>
+                  <option value="8063">BENJAMIN ARAOZ Y EL TAJAMAR</option>
+                  <option value="8623">CHOROMORO</option>
+                  <option value="8392">CAPITAN CACERES</option>
+                  <option value="8077">COLOMBRES</option>
+                  <option value="8287">ESQUINA Y MANCOPA</option>
+                  <option value="8217">ESCABA</option>
+                  <option value="8602">EL CADILLAL</option>
+                  <option value="8091">EL BRACHO Y EL CEVILAR</option>
+                  <option value="8014">EL CHAÑAR</option>
+                  <option value="8399">EL CERCADO</option>
+                  <option value="8280">EL MOJON</option>
+                  <option value="8098">EL NARANJITO</option>
+                  <option value="8021">EL NARANJO Y EL SUNCHAL</option>
+                  <option value="8581">EL MOLLAR</option>
+                  <option value="8042">GARMENDIA</option>
+                  <option value="8182">GASTONA Y BELICHA</option>
+                  <option value="8308">LOS GOMEZ</option>
+                  <option value="8616">LOS NOGALES</option>
+                  <option value="8112">LAS CEJAS</option>
+                  <option value="8301">LAS TALAS</option>
+                  <option value="8119">LOS BULACIO Y LOS VILLAGRA</option>
+                  <option value="8126">LOS PEREYRA</option>
+                  <option value="8133">LOS PEREZ</option>
+                  <option value="8469">LOS SARMIENTO Y LA TIPA</option>
+                  <option value="8413">LOS SOSA</option>
+                  <option value="8609">LA ESPERANZA</option>
+                  <option value="8056">LA RAMADA Y LA CRUZ</option>
+                  <option value="8105">LA FLORIDA Y LUISIANA</option>
+                  <option value="8189">LA TRINIDAD</option>
+                  <option value="8070">VILLA PADRE MONTI</option>
+                  <option value="8350">VILLA DE LEALES</option>
+                  <option value="8553">VILLA CHICLIGASTA</option>
+                  <option value="8455">VILLA QUINTEROS</option>
+                  <option value="8224">VILLA BELGRANO</option>
+                  <option value="8273">AGUA DULCE Y LA SOLEDAD</option>
+                  <option value="8007">7 DE ABRIL</option>
+                  <option value="8322">MANUEL GARCIA FERNANDEZ</option>
+                  <option value="8511">MANUELA PEDRAZA</option>
+                  <option value="8518">MONTEAGUDO</option>
+                  <option value="8476">MONTE BELLO</option>
+                  <option value="8161">ALPACHIRI Y EL MOLINO</option>
+                  <option value="8168">ALTO VERDE Y LOS GUCHEA</option>
+                  <option value="8105">LA FLORIDA Y LUISIANA</option>
+                  <option value="8210">TACO RALO</option>
+                  <option value="8637">TAPIA</option>
+                  <option value="8245">RUMI PUNCO</option>
+                  <option value="8588">RACO</option>
+                  <option value="8294">ESTACION ARAOZ Y TACANAS</option>
+                  <option value="8336">RIO COLORADO</option>
+                  <option value="8532">RIO CHICO Y NUEVA TRINIDAD</option>
+                  <option value="8420">RIO SECO</option>
+                  <option value="8343">
+                    SANTA ROSA DE LEALES Y LAGUNA BLANCA
+                  </option>
+                  <option value="8483">SANTA ANA</option>
+                  <option value="8427">SANTA LUCIA</option>
+                  <option value="8546">SANTA CRUZ Y LA TUNA</option>
+                  <option value="8364">SAN FELIPE Y SANTA BARBARA</option>
+                  <option value="8154">SAN ANDRES</option>
+                  <option value="8252">SAN IGNACIO</option>
+                  <option value="8259">SAN JOSE DE LA COCHA</option>
+                  <option value="8371">SAN PABLO Y VILLA NOUGUES</option>
+                  <option value="8630">SAN PEDRO DE COLALAO</option>
+                  <option value="8539">SAN PEDRO Y SAN ANTONIO</option>
+                  <option value="8651">SAN JAVIER</option>
+                  <option value="8448">TENIENTE BERDINA</option>
+                  <option value="8560">YERBA BUENA (Simoca)</option>
+                  <option value="8266">YANIMA Y EL CORRALITO</option>
+                </optgroup>
+                <optgroup>
+                  <option value="0000">SIN JURISDICCION</option>
+                </optgroup>
               </select>
             </div>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>Radio</legend>
-          <div>
-            <input id="radio" type="checkbox" />
-            <label for="radio">Aplicar Filtro</label>
+          </fieldset>
+        </div>
+        <!-- frac y radio -->
+        <!--
+        <div>
+          <fieldset>
+            <legend>Fracción</legend>
             <div>
-              <label for="radio-selector">Radio:</label>
-              <select name="selector" id="radio-selector">
-                <option value="01">01</option>
-                <option value="02">02</option>
-                <option value="03">03</option>
-                <option value="04">04</option>
-                <option value="05">05</option>
-                <option value="06">06</option>
-                <option value="07">07</option>
-                <option value="08">08</option>
-                <option value="09">09</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-                <option value="16">16</option>
-                <option value="17">17</option>
-                <option value="18">18</option>
-                <option value="19">19</option>
-                <option value="20">20</option>
-                <option value="21">21</option>
-                <option value="22">22</option>
-                <option value="23">23</option>
-                <option value="24">24</option>
-                <option value="25">25</option>
-                <option value="26">26</option>
-                <option value="27">27</option>
-              </select>
+              <input id="frac" type="checkbox" />
+              <label for="frac">Aplicar</label>
+              <div>
+                <label for="frac-selector">Fracción:</label>
+                <select name="selector" id="frac-selector">
+                  <option value="01">01</option>
+                  <option value="02">02</option>
+                  <option value="03">03</option>
+                  <option value="04">04</option>
+                  <option value="05">05</option>
+                  <option value="06">06</option>
+                  <option value="07">07</option>
+                  <option value="08">08</option>
+                  <option value="09">09</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+                  <option value="26">26</option>
+                  <option value="27">27</option>
+                  <option value="28">28</option>
+                  <option value="29">29</option>
+                  <option value="30">30</option>
+                  <option value="31">31</option>
+                  <option value="32">32</option>
+                  <option value="33">33</option>
+                  <option value="34">34</option>
+                  <option value="35">35</option>
+                  <option value="36">36</option>
+                  <option value="37">37</option>
+                  <option value="38">38</option>
+                  <option value="39">39</option>
+                  <option value="40">40</option>
+                  <option value="41">41</option>
+                  <option value="42">42</option>
+                  <option value="43">43</option>
+                  <option value="44">44</option>
+                </select>
+              </div>
             </div>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>Privación Convergente %</legend>
-          <div>
-            <input id="hpprivconv" type="checkbox" />
-            <label for="hpprivconv">Aplicar Filtro</label>
+          </fieldset>
+          <fieldset>
+            <legend>Radio</legend>
             <div>
-              <label for="operator-hpprivconv">Operator:</label>
+              <input id="radio" type="checkbox" />
+              <label for="radio">Aplicar</label>
+              <div>
+                <label for="radio-selector">Radio:</label>
+                <select name="selector" id="radio-selector">
+                  <option value="01">01</option>
+                  <option value="02">02</option>
+                  <option value="03">03</option>
+                  <option value="04">04</option>
+                  <option value="05">05</option>
+                  <option value="06">06</option>
+                  <option value="07">07</option>
+                  <option value="08">08</option>
+                  <option value="09">09</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+                  <option value="26">26</option>
+                  <option value="27">27</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+        </div> -->
+        <!-- valor priv convergente -->
+        <div>
+          <fieldset>
+            <legend>Cantidad de hogares en el radio</legend>
+            <div>
+              <label class="checkbox">
+                <input id="htotal" type="checkbox" />
+                <span></span>
+              </label>
+              <label for="operator-htotal"></label>
+              <select name="operator" id="operator-htotal">
+                <option value=">=">>=</option>
+                <option value="==" selected>==</option>
+                <option value="<="><=</option>
+              </select>
+              <br />
+              <input
+                type="number"
+                id="range-htotal"
+                name="range"
+                value="10"
+                min="1"
+              />
+            </div>
+          </fieldset>
+        </div>
+        <div>
+          <fieldset>
+            <legend>
+              Privación Convergente %
+              <button class="info-btn" data-info="hpprivconv">ℹ️</button>
+            </legend>
+            <!-- <label for="hpprivconv"></label> -->
+            <div>
+              <label class="checkbox">
+                <input id="hpprivconv" type="checkbox" />
+                <span></span>
+              </label>
+              <label for="operator-hpprivconv"></label>
               <select name="operator" id="operator-hpprivconv">
                 <option value=">=">>=</option>
                 <option value="==" selected>==</option>
                 <option value="<="><=</option>
               </select>
               <br />
-              <label for="range-hpprivconv">Número:</label>
               <input
                 type="number"
                 id="range-hpprivconv"
@@ -167,318 +349,68 @@ draft = false
                 max="100"
               />
             </div>
-          </div>
-        </fieldset>
-      </div>
-       <div id="capa-info">
-          <p>
-            Del lado <b>izquierdo</b> se muestra el Estimador Provincial de IPMH
-            para el <b>Censo 2010</b>
-          </p>
-          <p>
-            Del lado <b>derecho</b> se muestra el IPMH para el <b>Censo 2022</b>
-          </p>
+          </fieldset>
         </div>
+      </div>
+      <div id="capa-info">
+      </div>
       <div id="comparison-container">
         <div id="before" class="map"></div>
         <div id="after" class="map"></div>
       </div>
       <div id="datos">
-        <h2>Click en un radio para mostrar datos</h2>
-        IPMH %:
-        <p id="dato-hpprivconv"></p>
-        Depto:
-        <p id="dato-depto"></p>
-        Fracción:
-        <p id="dato-frac"></p>
-        Radio:
-        <p id="dato-radio"></p>       
-      </div>
-       <div id="state-legend" class="legend">
-          <h4>Porcentaje de hogares con Privación Convergente</h4>
-          <div><span style="background-color: #ffffd4"></span>0% - 20%</div>
-          <div><span style="background-color: #fec46c"></span>20,01% - 30%</div>
-          <div><span style="background-color: #e57217"></span>30,01% - 60%</div>
-          <div>
-            <span style="background-color: #993404"></span>60,01% - 100%
+        <h2>Datos del radio seleccionado</h2>
+        <div class="cards">
+          <div class="card">
+            <span class="icon">🏠</span>
+            <div>
+              <small>Total de hogares</small>
+              <b id="dato-htotal"></b>
+            </div>
           </div>
+          <div class="card">
+            <span class="icon">⚠️</span>
+            <div>
+              <small>Hogares con privación convergente</small>
+              <b id="dato-hprivconv"></b>
+            </div>
+          </div>
+          <div class="card highlight">
+            <span class="icon">📊</span>
+            <div>
+              <small>Privación Convergente (%)</small>
+              <b id="dato-hpprivconv"></b>
+            </div>
+          </div>
+          <div class="card">
+            <span class="icon">📍</span>
+            <div>
+              <small>Departamento / Gobierno Local</small>
+              <b>
+                <span id="dato-depto"></span> /
+                <span id="dato-gobierno-local"></span>
+              </b>
+            </div>
+          </div>
+          <!-- <div class="card">
+            <span class="icon">🧭</span>
+            <div>
+              <small>Fracción / Radio</small>
+              <b>
+                <span id="dato-frac"></span> /
+                <span id="dato-radio"></span>
+              </b>
+            </div>
+          </div> -->
         </div>
-</div>
-<script>
-      const beforeMap = new maplibregl.Map({
-        container: "before", // container id
-        style: {
-          version: 8,
-          sources: {
-            argenmap: {
-              type: "raster",
-              scheme: "tms",
-              tiles: [
-                "https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG%3A3857@png/{z}/{x}/{y}.png",
-              ],
-              tileSize: 256,
-            },
-          },
-          layers: [
-            {
-              id: "imagery-tiles",
-              type: "raster",
-              source: "argenmap",
-              minzoom: 1,
-              maxzoom: 18,
-            },
-          ],
-        },
-        center: [-65.215, -26.815], // starting position [lng, lat]
-        zoom: 8, // starting zoom
-      });
-      const afterMap = new maplibregl.Map({
-        container: "after", // container id
-        style: {
-          version: 8,
-          sources: {
-            argenmap: {
-              type: "raster",
-              scheme: "tms",
-              tiles: [
-                "https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG%3A3857@png/{z}/{x}/{y}.png",
-              ],
-              tileSize: 256,
-            },
-          },
-          layers: [
-            {
-              id: "imagery-tiles",
-              type: "raster",
-              source: "argenmap",
-              minzoom: 1,
-              maxzoom: 18,
-            },
-          ],
-        },
-        center: [-65.215, -26.815], // starting position [lng, lat]
-        zoom: 8, // starting zoom
-      });
-      const data = {};
-      let hoveredStateId = null;
-      beforeMap.on("load", () => {
-        beforeMap.addSource("ipmh_censo_2010", {
-          type: "geojson",
-          data: `./data/ipmh_censo_2010.geojson`,
-          //genera id unico
-          generateId: true,
-        });
-        beforeMap.addLayer({
-          id: "ipmh_censo_2010",
-          type: "fill",
-          source: "ipmh_censo_2010",
-          layout: {},
-          paint: {
-            "fill-color": [
-              "step",
-              ["get", "hpprivconv"],
-              "#ffffd4",
-              20,
-              "#fec46c",
-              30,
-              "#e57217",
-              60,
-              "#993404",
-            ],
-          },
-        });
-        beforeMap.addLayer({
-          id: "linea-ipmh_censo_2010",
-          type: "line",
-          source: "ipmh_censo_2010",
-          layout: {},
-          paint: {
-            "line-color": "black",
-            "line-width": [
-              "case",
-              ["boolean", ["feature-state", "hover"], false],
-              3,
-              0.5,
-            ],
-          },
-        });
-        // When a click event occurs on a feature in the states layer, open a popup at the
-        // location of the click, with description HTML from its properties.
-        beforeMap.on("click", "ipmh_censo_2010", (e) => {
-          const datos = document.querySelector("#datos");
-          const depto = document.querySelector("#dato-depto");
-          const frac = document.querySelector("#dato-frac");
-          const radio = document.querySelector("#dato-radio");
-          const hpprivconv = document.querySelector("#dato-hpprivconv");
-          hpprivconv.textContent = e.features[0].properties.hpprivconv;
-          depto.textContent = e.features[0].properties.depto;
-          frac.textContent = e.features[0].properties.frac;
-          radio.textContent = e.features[0].properties.radio;
-        });
-        // Change the cursor to a pointer when the mouse is over the states layer.
-        beforeMap.on("mouseenter", "ipmh_censo_2010", () => {
-          beforeMap.getCanvas().style.cursor = "pointer";
-        });
-        // When the user moves their mouse over the state-fill layer, we'll update the
-        // feature state for the feature under the mouse.
-        beforeMap.on("mousemove", "ipmh_censo_2010", (e) => {
-          if (e.features.length > 0) {
-            if (hoveredStateId) {
-              beforeMap.setFeatureState(
-                { source: "ipmh_censo_2010", id: hoveredStateId },
-                { hover: false }
-              );
-            }
-            hoveredStateId = e.features[0].id;
-            beforeMap.setFeatureState(
-              { source: "ipmh_censo_2010", id: hoveredStateId },
-              { hover: true }
-            );
-          }
-        });
-        // When the mouse leaves the state-fill layer, update the feature state of the
-        // previously hovered feature.
-        beforeMap.on("mouseleave", "ipmh_censo_2010", () => {
-          if (hoveredStateId) {
-            beforeMap.setFeatureState(
-              { source: "ipmh_censo_2010", id: hoveredStateId },
-              { hover: false }
-            );
-          }
-          hoveredStateId = null;
-        });
-      });
-      afterMap.on("load", () => {
-        afterMap.addSource("ipmh_censo_2022", {
-          type: "geojson",
-          data: `./data/ipmh_censo_2022.geojson`,
-          //genera id unico
-          generateId: true,
-        });
-        afterMap.addLayer({
-          id: "ipmh_censo_2022",
-          type: "fill",
-          source: "ipmh_censo_2022",
-          layout: {},
-          paint: {
-            "fill-color": [
-              "step",
-              ["get", "hpprivconv"],
-              "#ffffd4",
-              20,
-              "#fec46c",
-              30,
-              "#e57217",
-              60,
-              "#993404",
-            ],
-          },
-        });
-        afterMap.addLayer({
-          id: "linea-ipmh_censo_2022",
-          type: "line",
-          source: "ipmh_censo_2022",
-          layout: {},
-          paint: {
-            "line-color": "black",
-            "line-width": [
-              "case",
-              ["boolean", ["feature-state", "hover"], false],
-              3,
-              0.5,
-            ],
-          },
-        });
-        // When a click event occurs on a feature in the states layer, open a popup at the
-        // location of the click, with description HTML from its properties.
-        afterMap.on("click", "ipmh_censo_2022", (e) => {
-          const datos = document.querySelector("#datos");
-          const depto = document.querySelector("#dato-depto");
-          const frac = document.querySelector("#dato-frac");
-          const radio = document.querySelector("#dato-radio");
-          const hpprivconv = document.querySelector("#dato-hpprivconv");
-          depto.textContent = e.features[0].properties.depto;
-          hpprivconv.textContent = e.features[0].properties.hpprivconv;
-        });
-        // Change the cursor to a pointer when the mouse is over the states layer.
-        afterMap.on("mouseenter", "ipmh_censo_2022", () => {
-          afterMap.getCanvas().style.cursor = "pointer";
-        });
-        // When the user moves their mouse over the state-fill layer, we'll update the
-        // feature state for the feature under the mouse.
-        afterMap.on("mousemove", "ipmh_censo_2022", (e) => {
-          if (e.features.length > 0) {
-            if (hoveredStateId) {
-              afterMap.setFeatureState(
-                { source: "ipmh_censo_2022", id: hoveredStateId },
-                { hover: false }
-              );
-            }
-            hoveredStateId = e.features[0].id;
-            afterMap.setFeatureState(
-              { source: "ipmh_censo_2022", id: hoveredStateId },
-              { hover: true }
-            );
-          }
-        });
-        // When the mouse leaves the state-fill layer, update the feature state of the
-        // previously hovered feature.
-        afterMap.on("mouseleave", "ipmh_censo_2022", () => {
-          afterMap.getCanvas().style.cursor = "";
-          if (hoveredStateId) {
-            afterMap.setFeatureState(
-              { source: "ipmh_censo_2022", id: hoveredStateId },
-              { hover: false }
-            );
-          }
-          hoveredStateId = null;
-        });
-      });
-      let container = "#comparison-container";
-      var map = new maplibregl.Compare(beforeMap, afterMap, container, {
-        // mousemove: true,
-        // orientation: "vertical",
-      });
-      document.getElementById("filtros").addEventListener("change", (e) => {
-        switch (e.target.id) {
-          case "depto":
-            depto = document.getElementById("depto-selector");
-            operator = "==";
-            e.target.checked
-              ? (data.depto = depto.value)
-              : delete data["depto"];
-            console.log(data);
-            break;
-          case "frac":
-            frac = document.getElementById("frac-selector");
-            operator = "==";
-            e.target.checked ? (data.frac = frac.value) : delete data["frac"];
-            console.log(data);
-            break;
-          case "radio":
-            radio = document.getElementById("radio-selector");
-            operator = "==";
-            e.target.checked
-              ? (data.radio = radio.value)
-              : delete data["radio"];
-            console.log(data);
-            break;
-          case "hpprivconv":
-            operatorHpprivconv = document.getElementById("operator-hpprivconv");
-            hpprivconv = document.getElementById("range-hpprivconv");
-            operator = operatorHpprivconv.value;
-            e.target.checked
-              ? (data.hpprivconv = Number(hpprivconv.value))
-              : delete data["hpprivconv"];
-            break;
-        }
-        filterOnValue = Object.keys(data);
-        mapLibreFilterSpread = [
-          "all",
-          ...filterOnValue.map((id) => [operator, id, data[id]]),
-        ];
-        mapLibreFilter = mapLibreFilterSpread;
-        afterMap.setFilter("ipmh_censo_2022", mapLibreFilter);
-        beforeMap.setFilter("ipmh_censo_2010", mapLibreFilter);
-      });
-    </script>
+      </div>
+      <div id="state-legend" class="legend">
+        <h4>Privación Convergente</h4>
+        <div><span style="background-color: #f1eef6"></span>0% – 20%</div>
+        <div><span style="background-color: #d7b5d8"></span>20% – 40%</div>
+        <div><span style="background-color: #df65b0"></span>40% – 60%</div>
+        <div><span style="background-color: #dd1c77"></span>60% – 80%</div>
+        <div><span style="background-color: #980043"></span>80% – 100%</div>
+      </div>
+    </div>
+    <script src="./mapa.js"></script>
